@@ -29,15 +29,64 @@ public class LoginScreen extends JFrame {
         UID=new JLabel("User ID: ");
         pword=new JLabel("Password: ");
         password=new JPasswordField();
-        p1.setLayout(new GridLayout(4,4));
+        button=new JButton("Login");
+
+        //setSize(800, 300);
+
+
+        /*p1.setLayout(new GridLayout(4,4));
         p1.add(UID);
         p1.add(ID);
         p1.add(pword);
         p1.add(password);
-        setLayout(new GridLayout(2,1));
+        setLayout(new GridLayout(2,1));*/
+
+
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(pword)
+                                        .addComponent(UID))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(ID)
+                                        .addComponent(password, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(152, Short.MAX_VALUE)
+                                .addComponent(button, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                                .addGap(148, 148, 148))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(ID, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(UID))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(pword)
+                                        .addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                                .addGap(32, 32, 32)
+                                .addComponent(button)
+                                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        pack();
+        //p1.setVisible(true);
+
+
+
+
+
         add(p1);
 
-        button=new JButton("Login");
+
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +119,7 @@ public class LoginScreen extends JFrame {
                     }
 
                 }
-                 catch (SQLException e1) {
+                catch (SQLException e1) {
                     e1.printStackTrace();
                 }
 
@@ -80,7 +129,7 @@ public class LoginScreen extends JFrame {
             }
         });
         add(button);
-        setSize(300,200);
+        //setSize(300,200);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         setLocationRelativeTo(null);
